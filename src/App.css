@@ -1,0 +1,85 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.product_desc, .product_style{
+  text-justify: auto;
+  text-transform: uppercase
+}
+.div_prod_desc{
+  text-align: left;
+}
+.center_txt{
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.product_action{
+    text-transform: uppercase;
+    padding: 0px 5px 0px 5px;
+    border-right: 2px solid #ccc;
+}
+
+.product_action a {
+    color: #bbb;
+}
+
+.ul_color{
+      display: inline-flex;
+    list-style: none;
+}
+
+.prod_desc{
+  text-align: center;
+    display: block;
+    margin: auto;
+    line-height: 70px;
+}
+
+.amt_div{
+  text-align: right;
+  font-weight: bold;
+}
+.order_details_div{
+  line-height: 50px;
+}
+.order_details_div label{
+  text-transform: uppercase;
+}
+.App-header h2{
+  text-transform: uppercase;
+  text-align: center
+}
+
+.qty_div input{
+      width: 25px;
+    text-align: center;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}

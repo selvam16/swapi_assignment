@@ -1,0 +1,79 @@
+h1, p {
+  font-family: Lato;
+}
+
+.row{
+  margin: 0px!important;
+}
+body{
+  background: #eee;
+}
+
+.headerStyle{
+  background: #40368c;
+  text-transform: uppercase;
+  color: white;
+  line-height: 40px;
+}
+.headerStyleblue{  
+  background: #71c2d6;
+  text-transform: uppercase;
+  color: white;
+  line-height: 40px;  
+}
+.mainHeader{
+  background: #40368c;
+  text-transform: uppercase;
+  color: white;
+  line-height: 40px;
+}
+
+.mainHeader>ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.mainHeader>ul>li {
+  float: left;
+}
+.mainHeader>ul>li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.top_loader{
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  overflow: hidden;
+  z-index: 8;
+  pointer-events: auto;
+}
+.loading{
+    width:160px;
+    height:160px;
+    border-radius:150px;
+    border:15px solid #fff;
+    border-top-color:#002853;
+    box-sizing:border-box;
+    position:absolute;
+    top:50%;left:50%;
+    margin-top:-80px;
+    margin-left:-80px;
+    animation:loading 1.2s linear infinite;
+    -webkit-animation:loading 1.2s linear infinite;
+  }
+  @keyframes loading{
+    0%{transform:rotate(0deg)}
+    100%{transform:rotate(360deg)}
+  }
+  @-webkit-keyframes loading{
+    0%{-webkit-transform:rotate(0deg)}
+    100%{-webkit-transform:rotate(360deg)}
+  }
