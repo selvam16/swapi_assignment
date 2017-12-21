@@ -98,7 +98,7 @@ class App extends Component {
                                 <span className="fa fa-2x fa-search"></span>
                             </button>
                         </div>
-                    </div></li><li style={{ float: "right" }}><a onClick={this.logout.bind(this)}>Logout</a></li></ul>
+                    </div></li><li style={{ float: "right" }}><a style={{cursor:'pointer'}} title='Logout' onClick={this.logout.bind(this)}>Logout</a></li></ul>
                 </div>
                 <div className="row" style={{ background: 'white', padding: '10px' }}>
                     <h6 className="text-center headerStyle" >Plants</h6>
