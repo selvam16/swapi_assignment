@@ -4,12 +4,11 @@ import {Provider} from 'react-redux';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
-import App from './App';
-
+import 'primereact/resources/themes/omega/theme.css';
+import 'primereact/resources/primereact.min.css';
 import { Router, hashHistory } from 'react-router';
 import registerServiceWorker from './registerServiceWorker';
 import configureStore from './store/configureStore';
-import {loadProducts} from './actions/productActions';
 import routes from './routes'
 import { syncHistoryWithStore } from 'react-router-redux'
 

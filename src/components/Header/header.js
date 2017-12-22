@@ -1,22 +1,24 @@
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as product_action from '../../actions/productActions';
+import cookie from 'react-cookie';
 
+import { hashHistory } from 'react-router';
 class Header extends Component {
+
+
+    logout() {
+        cookie.remove('logged');
+        hashHistory.push('/');
+    }
 
 
     render() {
         return (
             <div className='mainHeader'>
-          <ul><li><a>Logo</a></li><li style={{width:"40%"}}><div className="input-group" style={{ margin: '15px' }}>
-            <input type="text" className="form-control" placeholder="Search" id="txtSearch" />
-            <div className="input-group-btn">
-              <button className="btn btn-primary" type="submit">
-                <span className="fa fa-2x fa-search"></span>
-              </button>
-            </div>
-          </div></li><li style={{ float: "right" }}><a>Right Menu</a></li></ul>
+          <ul><li><a>Logo</a></li>
+          <li style={{ float: "right" }}><a style={{cursor:'pointer'}} title='Logout' onClick={this.logout.bind(this)}>Logout</a></li></ul>
         </div>
         )
     }

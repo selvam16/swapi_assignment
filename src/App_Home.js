@@ -17,6 +17,7 @@ class App_Home extends Component {
     }
 
     componentWillMount() {
+        
         if (cookie.load('logged')) {
             hashHistory.push('/app');
         }
@@ -37,8 +38,6 @@ class App_Home extends Component {
             margin: 15,
         };
 
-
-        var userlist = this.props.users;
 
         return (
 

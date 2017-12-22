@@ -1,18 +1,21 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import ProductList from './components/products/productList';
 import * as product_action from './actions/productActions';
 
 import Header from './components/Header/header'
-import NotesList from './components/products/nodeList'
 import Pagination from 'rc-pagination';
 import enUS from 'rc-pagination/lib/locale/en_US.js';
 
 import { hashHistory } from 'react-router';
 import cookie from 'react-cookie';
+
+import { DataTable } from 'primereact/components/datatable/DataTable';
+import { Column } from 'primereact/components/column/Column';
+
 require('rc-pagination/assets/index.css');
+
 
 class App extends Component {
     constructor(props) {
@@ -30,19 +33,17 @@ class App extends Component {
 
     componentWillMount() {
         if (cookie.load('logged')) {
-            var self = this;
+            let self = this;
             this.setState({ isloading: true })
             this.props.actions.loadProducts(this.state.activepage, () => {
-    
+
                 self.setState({ isloading: false })
             });
         }
-        else{
+        else {
 
             hashHistory.push('/');
         }
-        
-
     }
 
     componentWillReceiveProps(nextProps) {
@@ -55,23 +56,9 @@ class App extends Component {
     handleEdit(data) {
         this.setState({ singleData: data })
     }
-    logout(){
-        cookie.remove('logged');
-        hashHistory.push('/');
-    }
 
-    handleOnchange(event){
-        var value = event.target.value;
-        var data = this.state.product_list;
-        var filteredData = this.state.product_list.results.filter(data=>{return data.name.toLowerCase().indexOf(value.toLowerCase())>-1})
-        data.results = filteredData;
-        this.setState({product_list:data})
-    }
-
-   
     handleonChangePage(pageNumber) {
-
-        var self = this;
+        let self = this;
         this.setState({ isloading: true })
         this.setState({ activepage: pageNumber });
         this.props.actions.loadProducts(pageNumber, () =>
@@ -79,10 +66,10 @@ class App extends Component {
         );
     }
 
-
     render() {
-        return (
 
+        const prod_list = this.props.product_list;
+        return (
             <div className="container">
                 {
                     this.state.isloading &&
@@ -90,32 +77,26 @@ class App extends Component {
 
                         <div className="loading"></div>
                     </div>
-                }  <div className='mainHeader'>
-                    <ul><li><a>Logo</a></li><li style={{ width: "40%" }}><div className="input-group" style={{ margin: '15px' }}>
-                        <input type="text" className="form-control" placeholder="Search" id="txtSearch" onChange={this.handleOnchange.bind(this)}  />
-                        <div className="input-group-btn">
-                            <button className="btn btn-primary" type="submit">
-                                <span className="fa fa-2x fa-search"></span>
-                            </button>
-                        </div>
-                    </div></li><li style={{ float: "right" }}><a style={{cursor:'pointer'}} title='Logout' onClick={this.logout.bind(this)}>Logout</a></li></ul>
-                </div>
+                }
+                <Header />
                 <div className="row" style={{ background: 'white', padding: '10px' }}>
                     <h6 className="text-center headerStyle" >Plants</h6>
 
-                    <ProductList products={this.state.product_list.results} editAction={this.handleEdit} />{
-                        (this.state.product_list.results !== undefined && this.state.product_list.results !== null && this.state.product_list.results.length) > 0 &&
-                        <Pagination showTotal={(total, range) => `${range[0]} - ${range[1]} of ${total} items`} current={this.state.activepage} defaultPageSize={10} locale={enUS} total={this.state.product_list.count} onChange={this.handleonChangePage.bind(this)} />
-                    }
+                    <DataTable value={prod_list.results}>
+                        <Column key="name" field="name" header="Name" filter={true} />
+                        <Column key="orbital_period" field="orbital_period" header="Orbital Period" filter={true} />
+                        <Column key="name" field="rotation_period" header="Rotation Period" filter={true} />
+                        <Column key="name" field="terrain" header="Terrain" filter={true} />
+                    </DataTable>
+
+                    <Pagination showTotal={(total, range) => `${range[0]} - ${range[1]} of ${total} items`} current={this.state.activepage} defaultPageSize={10} locale={enUS} total={this.state.product_list.count} onChange={this.handleonChangePage.bind(this)} style={{ margin: '20px', float: "right" }} />
+
 
 
                 </div>
                 <div>
                 </div>
             </div>
-
-
-
         );
     }
 }
