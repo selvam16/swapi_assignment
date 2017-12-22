@@ -82,7 +82,7 @@ class App extends Component {
                 <div className="row" style={{ background: 'white', padding: '10px' }}>
                     <h6 className="text-center headerStyle" >Plants</h6>
 
-                    <DataTable value={prod_list.results}>
+                    <DataTable value={prod_list.results} paginator={true} rows={5}>
                         <Column key="name" field="name" header="Name" filter={true} />
                         <Column key="orbital_period" field="orbital_period" header="Orbital Period" filter={true} />
                         <Column key="name" field="rotation_period" header="Rotation Period" filter={true} />
