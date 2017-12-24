@@ -26,7 +26,8 @@ class App_Home extends Component {
     handleClick(event) {
         let userdata = this.props.users.filter(data => { if (data.name === this.state.username && data.birth_year === this.state.dob) return data} );
         if(userdata.length !== 0){
-            cookie.save('logged',true)
+            cookie.save('logged',true);
+            cookie.save('userdata',userdata[0]);
             hashHistory.push('/app');
         }
         else{

@@ -7,6 +7,18 @@ import cookie from 'react-cookie';
 import { hashHistory } from 'react-router';
 class Header extends Component {
 
+    constructor(props){
+        super(props);
+        this.state ={
+            username : ''
+        }
+    }
+
+
+    componentWillMount(){
+        let userdata = cookie.load('userdata');
+        this.setState({username:userdata.name})
+    }
 
     logout() {
         cookie.remove('logged');
@@ -18,7 +30,9 @@ class Header extends Component {
         return (
             <div className='mainHeader'>
           <ul><li><a>Logo</a></li>
-          <li style={{ float: "right" }}><a style={{cursor:'pointer'}} title='Logout' onClick={this.logout.bind(this)}>Logout</a></li></ul>
+          <li style={{ float: "right" }}><ul>
+              <li><a><span className='userText'>Welcome {this.state.username}</span></a></li>
+              <li><a style={{cursor:'pointer'}} title='Logout' onClick={this.logout.bind(this)}>Logout</a></li></ul></li></ul>
         </div>
         )
     }

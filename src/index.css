@@ -28,17 +28,17 @@ body{
   line-height: 40px;
 }
 
-.mainHeader>ul {
+.mainHeader ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
 }
 
-.mainHeader>ul>li {
+.mainHeader ul li {
   float: left;
 }
-.mainHeader>ul>li a {
+.mainHeader ul li a {
     display: block;
     color: white;
     text-align: center;
@@ -76,4 +76,8 @@ body{
   @-webkit-keyframes loading{
     0%{-webkit-transform:rotate(0deg)}
     100%{-webkit-transform:rotate(360deg)}
+  }
+
+  .userText{
+    text-transform: capitalize;
   }

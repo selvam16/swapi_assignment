@@ -21,7 +21,6 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            singleData: {},
             product_list: [],
             activepage: 1,
             isloading: false
